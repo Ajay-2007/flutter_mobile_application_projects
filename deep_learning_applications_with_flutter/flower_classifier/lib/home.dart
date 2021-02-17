@@ -141,6 +141,18 @@ class _HomeState extends State<Home> {
                                         child: Image.file(_image),
                                       ),
                                     ),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    _output != null
+                                        ? Text(
+                                            'Prediction is: ${_output[0]['label']}',
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontSize: 20),
+                                          )
+                                        : Container(),
+                                    SizedBox(height: 30),
                                   ],
                                 ),
                               ),
