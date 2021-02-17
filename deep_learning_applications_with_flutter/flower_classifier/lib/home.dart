@@ -26,7 +26,7 @@ class _HomeState extends State<Home> {
   classifyImage(File image) async {
     var output = await Tflite.runModelOnImage(
       path: image.path,
-      numResults: 2,
+      numResults: 5,
       threshold: 0.5,
       imageMean: 127.5,
       imageStd: 127.5,
@@ -40,7 +40,7 @@ class _HomeState extends State<Home> {
 
   loadModel() async {
     await Tflite.loadModel(
-        model: 'assets/model_unquant.tflite', labels: 'assets/labels.txt');
+        model: 'assets/flower_classifier_model.tflite', labels: 'assets/labels.txt');
   }
 
   @override
@@ -181,7 +181,7 @@ class _HomeState extends State<Home> {
                           ),
                           SizedBox(height: 5),
                           GestureDetector(
-                            onTap: pickImage,
+                            onTap: pickGalleryImage,
                             child: Container(
                               width: MediaQuery.of(context).size.width - 180,
                               alignment: Alignment.center,
