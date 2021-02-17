@@ -1,0 +1,4 @@
+#Wed Feb 17 15:02:26 IST 2021
+base.0=/home/ajay/flutter_mobile_application_projects/deep_learning_applications_with_flutter/flower_classifier/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
