@@ -14,24 +14,24 @@ class _MySplashState extends State<MySplash> {
       seconds: 2,
       navigateAfterSeconds: Home(),
       title: Text(
-        'Flower Recongnizerr',
+        'IFruit',
         style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 30,
           color: Colors.white,
         ),
       ),
-      image: Image.asset('assets/flower.png'),
+      image: Image.asset('assets/ifruit.png'),
+      photoSize: 50.0,
       gradientBackground: LinearGradient(
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
         stops: [0.004, 1],
         colors: [
-          Color(0xFFA8E063),
-          Color(0xFF56AB2F),
+          Color(0xFF00B4DB),
+          Color(0xFF0083B0),
         ],
       ),
-      photoSize: 50,
       loaderColor:Colors.white,
     );
   }

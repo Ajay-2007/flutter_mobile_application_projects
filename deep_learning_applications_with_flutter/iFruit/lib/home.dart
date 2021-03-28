@@ -83,7 +83,7 @@ class _HomeState extends State<Home> {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               stops: [0.004, 1],
-              colors: [Color(0xFFA8E063), Color(0xFF56AB2f)]),
+              colors: [Color(0xFF00B4DB), Color(0xFF0083B0)]),
         ),
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 24),
@@ -92,7 +92,7 @@ class _HomeState extends State<Home> {
             children: <Widget>[
               SizedBox(height: 50),
               Text(
-                'Detect Flowers',
+                'IFruit',
                 style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w800,
@@ -127,7 +127,7 @@ class _HomeState extends State<Home> {
                                 width: 300,
                                 child: Column(
                                   children: <Widget>[
-                                    Image.asset('assets/flower.png'),
+                                    Image.asset('assets/ifruit.png'),
                                     SizedBox(height: 40),
                                   ],
                                 ),
