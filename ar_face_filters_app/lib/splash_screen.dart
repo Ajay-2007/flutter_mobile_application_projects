@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
 
+import 'cmaera_with_mask_filters_screen.dart';
+
 class MySplashScreen extends StatefulWidget {
   @override
   _MySplashScreenState createState() => _MySplashScreenState();
@@ -11,6 +13,7 @@ class _MySplashScreenState extends State<MySplashScreen> {
   Widget build(BuildContext context) {
     return SplashScreen(
       seconds: 10,
+      navigateAfterSeconds: CameraWithMaskFiltersScreen(),
       title: Text(
         "AR Face Filters App",
         style: TextStyle(

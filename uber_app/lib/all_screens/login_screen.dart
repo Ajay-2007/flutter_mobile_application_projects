@@ -151,8 +151,7 @@ class LoginScreen extends StatelessWidget {
         .user;
 
     if (firebaseUser != null) {
-      // user created
-      // save user info to database
+      // user logged in
       usersRef.child(firebaseUser.uid).once().then((DataSnapshot snap) {
         if (snap.value != null) {
           Navigator.pushNamedAndRemoveUntil(
@@ -166,6 +165,7 @@ class LoginScreen extends StatelessWidget {
               context);
         }
       });
+
       displayToastMessage(
           "Congratulations, your account has been created.", context);
 
