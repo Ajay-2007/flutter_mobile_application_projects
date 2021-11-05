@@ -109,15 +109,18 @@ class Portfolio extends StatelessWidget {
         children: technologies
             .map(
               (technology) => Card(
-                child: Column(
-                  children: [
-                    Image.asset(
-                      'assets/badges/$technology.png',
-                      width: 48,
-                    ),
-                    const SizedBox(height: 4.0),
-                    Text(technology),
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        'assets/badges/$technology.png',
+                        width: 48.0,
+                      ),
+                      const SizedBox(height: 4.0),
+                      Text(technology),
+                    ],
+                  ),
                 ),
               ),
             )
@@ -132,23 +135,67 @@ class Portfolio extends StatelessWidget {
     required String description,
     String? visitLink,
   }) {
-    return Card(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Image.asset(
-            imageUrl,
-            fit: BoxFit.cover,
-            height: 200,
-            width: 350,
+    return Container(
+      constraints: BoxConstraints(maxWidth: 350),
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.0),
+          side: const BorderSide(
+            color: kDarkGrey,
           ),
-          Text(
-            title,
-            style: TextStyle(
-                color: kDarkGrey, fontWeight: FontWeight.w800, fontSize: 20.0),
-          ),
-          Text(description)
-        ],
+        ),
+        elevation: 2,
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        child: Column(
+          children: [
+            Image.asset(
+              imageUrl,
+              fit: BoxFit.cover,
+              height: 200,
+              width: 350,
+            ),
+            SizedBox(
+              width: double.infinity,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      title,
+                      style: TextStyle(
+                          color: kDarkGrey,
+                          fontWeight: FontWeight.w800,
+                          fontSize: 20.0),
+                    ),
+                    const SizedBox(
+                      height: 8.0,
+                    ),
+                    Text(
+                      description,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            if (visitLink != null)
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 16.0, bottom: 16.0, right: 16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () => _openUrl(visitLink),
+                      child: Text('VISIT'),
+                    ),
+                  ],
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }
@@ -160,18 +207,62 @@ class Portfolio extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 52.0, horizontal: 16.0),
       child: Column(
         children: [
-          _renderProjectCard(
-              imageUrl: 'assets/projects/pokedex.png',
-              title: 'Pokedex',
-              description: 'Pokemon explorer built with Flutter',
-              visitLink: 'https://pokedexweb.surge.sh'),
+          const Text('Projects',
+              style: TextStyle(
+                color: kDarkGrey,
+                fontSize: 28.0,
+                fontWeight: FontWeight.w500,
+              )),
+          const SizedBox(
+            height: 16.0,
+          ),
+          Wrap(
+            spacing: 16.0,
+            runSpacing: 16.0,
+            alignment: WrapAlignment.center,
+            children: [
+              _renderProjectCard(
+                  imageUrl: 'assets/projects/pokedex.png',
+                  title: 'Pokedex',
+                  description: 'Pokemon explorer built with Flutter',
+                  visitLink: 'https://pokedexweb.surge.sh'),
+              _renderProjectCard(
+                  imageUrl: 'assets/projects/cryptospace.png',
+                  title: 'Cryptospace',
+                  description: 'Cryptocurrency tracker',
+                  visitLink: 'https://cryptospace.surge.sh'),
+              _renderProjectCard(
+                  imageUrl: 'assets/projects/notable.png',
+                  title: 'Notable',
+                  description: 'Note-taking made simple',
+                  visitLink: 'https://notable.surge.sh'),
+              _renderProjectCard(
+                  imageUrl: 'assets/projects/chatly.png',
+                  title: 'Chatly',
+                  description: 'Real-time Chat',
+                  visitLink: 'https://chatly.surge.sh'),
+            ],
+          ),
         ],
       ),
     );
   }
 
   Widget _footer() {
-    return SizedBox.shrink();
+    return Container(
+      color: kBlackColor,
+      padding: const EdgeInsets.all(32.0),
+      child: Row(
+        children: [
+          Text(
+            'Made by Ajay R',
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -197,9 +288,16 @@ class Portfolio extends StatelessWidget {
           child: Column(
             // crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              _header(),
-              const SizedBox(height: 24.0),
-              _badges(),
+              Container(
+                constraints: BoxConstraints(maxWidth: 800.0),
+                child: Column(
+                  children: [
+                    _header(),
+                    const SizedBox(height: 24.0),
+                    _badges(),
+                  ],
+                ),
+              ),
               const SizedBox(height: 32.0),
               _projects(),
               _footer(),
