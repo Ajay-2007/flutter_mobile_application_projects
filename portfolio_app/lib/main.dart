@@ -286,7 +286,6 @@ class Portfolio extends StatelessWidget {
         ),
         body: SingleChildScrollView(
           child: Column(
-            // crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
                 constraints: BoxConstraints(maxWidth: 800.0),
